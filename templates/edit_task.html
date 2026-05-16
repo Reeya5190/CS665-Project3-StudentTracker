@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Task</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label>Task Title</label>
+        <input type="text" name="title" value="{{ task.title }}" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label>Student</label>
+        <select name="student_id" class="form-control">
+            {% for student in students %}
+            <option value="{{ student.student_id }}"
+                {% if student.student_id == task.student_id %}selected{% endif %}>
+                {{ student.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Category</label>
+        <select name="category_id" class="form-control">
+            {% for category in categories %}
+            <option value="{{ category.category_id }}"
+                {% if category.category_id == task.category_id %}selected{% endif %}>
+                {{ category.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Due Date</label>
+        <input type="date" name="due_date" value="{{ task.due_date }}" class="form-control">
+    </div>
+
+    <button class="btn btn-warning">Update Task</button>
+</form>
+{% endblock %}

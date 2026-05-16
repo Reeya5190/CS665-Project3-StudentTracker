@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Summary Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h4>Total Students</h4>
+            <p>{{ total_students }}</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h4>Total Tasks</h4>
+            <p>{{ total_tasks }}</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h4>Total Categories</h4>
+            <p>{{ total_categories }}</p>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h4>Average Days Remaining</h4>
+<p>{{ avg_days }}</p>
+
+<h4>Tasks by Category</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Category</th>
+        <th>Total Tasks</th>
+    </tr>
+
+    {% for category, count in tasks_by_category %}
+    <tr>
+        <td>{{ category }}</td>
+        <td>{{ count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
